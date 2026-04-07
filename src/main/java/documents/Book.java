@@ -92,7 +92,7 @@ public class Book extends Document {
         System.out.println("|");
     }
 
-    public void modifyDocument(Scanner sc, ArrayList<History> history){
+    public void modifyDocument(Scanner scanner, ArrayList<History> history){
         String choice, str;
         Pause p = new Pause();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -105,13 +105,13 @@ public class Book extends Document {
             System.out.println("\t 4) Nom auteur (" + getAuthorName() + ")");
             System.out.println("\t 5) Nom editeur (" + getEditorName() + ")");
             System.out.println("\t 6) Date publication (" + sdf.format(getPublicationDate()) + ")");
-            choice = sc.nextLine();
+            choice = scanner.nextLine();
             switch (choice){
                 case "0": return;
                 case "1":
                     String oldTitle = getTitle();
                     System.out.println("\t Entrer nouveau titre");
-                    setTitle(sc.nextLine());
+                    setTitle(scanner.nextLine());
                     history.add(new History(new Date(), "Document", "Modification", getId(), "Titre de " + oldTitle + " par " + getTitle()));
                     System.out.println("\t Modification avec succees.");
                     p.pause(1000);
@@ -119,7 +119,7 @@ public class Book extends Document {
                 case "2":
                     String loc = getLocation();
                     System.out.println("\t Entrer nouvelle localisation (Salle/Rayon)");
-                    setLocation(sc.nextLine());
+                    setLocation(scanner.nextLine());
                     System.out.println("\t Modification avec succees.");
                     history.add(new History(new Date(), "Document", "Modification", getId(), "Localisation de " + loc + " par " + getLocation()));
                     p.pause(1000);
@@ -130,16 +130,16 @@ public class Book extends Document {
                     int nb = getNumberCopies();
                     do {
                         try{
-                            setNumberCopies(sc.nextInt());
+                            setNumberCopies(scanner.nextInt());
                             verified = true;
                         } catch (Exception e){
                             System.out.println("\t Erreur! Veillez entrer des chiffres...");
                             System.out.println("\t Entrer nouveau nombre d'exemplaires");
                             p.pause(500);
-                            sc.nextLine();
+                            scanner.nextLine();
                         }
                     }while (!verified);
-                    sc.nextLine();
+                    scanner.nextLine();
                     history.add(new History(new Date(), "Document", "Modification", getId(), "Nb exemplaires de " + nb + " a " + getNumberCopies() + " exemplaires en totale"));
                     System.out.println("\t Modification avec succees.");
                     p.pause(1000);
@@ -147,7 +147,7 @@ public class Book extends Document {
                 case "4":
                     String oldAuthorName = getAuthorName();
                     System.out.println("\t Entrer nouveau nom d'auteur");
-                    setAuthorName(sc.nextLine());
+                    setAuthorName(scanner.nextLine());
                     history.add(new History(new Date(), "Document", "Modification", getId(), "Nom auteur de " + oldAuthorName + " par " + getAuthorName()));
                     System.out.println("\t Modification avec succees.");
                     p.pause(1000);
@@ -155,7 +155,7 @@ public class Book extends Document {
                 case "5":
                     String oldEditor= getEditorName();
                     System.out.println("\t Entrer nouveau nom d'éditeur");
-                    setEditorName(sc.nextLine());
+                    setEditorName(scanner.nextLine());
                     history.add(new History(new Date(), "Document", "Modification", getId(), "Nom editeur de " + oldEditor + " par " + getEditorName()));
                     System.out.println("\t Modification avec succees.");
                     p.pause(1000);
@@ -163,7 +163,7 @@ public class Book extends Document {
                 case "6":
                     String oldPublicationDate = sdf.format(getPublicationDate());
                     System.out.println("\t Entrer nouvelle date de publication sous forme (DD-MM-YYYY)");
-                    str = sc.nextLine();
+                    str = scanner.nextLine();
                     try {
                         setPublicationDate(sdf.parse(str));
                         System.out.println("\t Modification avec succees.");
