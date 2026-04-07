@@ -45,7 +45,7 @@ public class Magazine extends Document {
         System.out.print("|    ------------    ");
         System.out.print("|  ------  ");
         System.out.printf("|%12d", getFrequency());
-        System.out.printf("|%12s", getLocation());
+        System.out.printf("|%12s", getRegion());
         System.out.printf("|%12d", getNumberCopies());
         if (available==0){
             System.out.print("|"+ANSI_RED);
@@ -75,7 +75,7 @@ public class Magazine extends Document {
         do {
             System.out.println("\t 0) Sortire");
             System.out.println("\t 1) Titre (" + getTitle() + ")");
-            System.out.println("\t 2) Localisation (" + getLocation() + ")");
+            System.out.println("\t 2) Localisation (" + getRegion() + ")");
             System.out.println("\t 3) Nombre Exemplaires (" + getNumberCopies() + ")");
             System.out.println("\t 4) Fréquence de parution (" + getFrequency() + ")");
             choice = sc.nextLine();
@@ -90,11 +90,11 @@ public class Magazine extends Document {
                     p.pause(1000);
                     break;
                 case "2":
-                    String loc = getLocation();
+                    String loc = getRegion();
                     System.out.println("\t Entrer nouvelle localisation (Salle/Rayon)");
-                    setLocation(sc.nextLine());
+                    setRegion(sc.nextLine());
                     System.out.println("\t Modification avec succees.");
-                    history.add(new History(new Date(), "Document", "Modification", getId(), "Localisation de " + loc + " par " + getLocation()));
+                    history.add(new History(new Date(), "Document", "Modification", getId(), "Localisation de " + loc + " par " + getRegion()));
                     p.pause(1000);
                     break;
                 case "3":

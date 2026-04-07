@@ -35,11 +35,11 @@ public abstract class Document {
         this.title = title;
     }
 
-    public String getLocation() {
+    public String getRegion() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setRegion(String location) {
         this.location = location;
     }
 

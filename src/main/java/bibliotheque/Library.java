@@ -1071,7 +1071,7 @@ public class Library {
         System.out.println("\t Entrer le titre");
         d.setTitle(sc.nextLine());
         System.out.println("\t Entrer localisation (Salle/Rayon)");
-        d.setLocation(sc.nextLine());
+        d.setRegion(sc.nextLine());
         System.out.println("\t Entrer nombre exemplaires");
         boolean verified = false;
         do {
