@@ -66,7 +66,7 @@ public class Book extends Document {
         System.out.printf("|%4d", getId());
         System.out.printf("|%40s", getTitle());
         System.out.printf("|%18s", getAuthorName());
-        System.out.printf("|%20s", getEditorName());
+        System.out.printf("|%18s", getEditorName());
         System.out.printf("|%10s", sdf.format(getPublicationDate()));
         System.out.print("|   ------   ");
         System.out.printf("|%12s", getLocation());
