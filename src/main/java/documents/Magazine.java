@@ -70,14 +70,15 @@ public class Magazine extends Document {
 
     public void modifyDocument(Scanner sc, ArrayList<History> history){
         String choice;
+        boolean verified;
         Pause p = new Pause();
         System.out.println("\t Que voulez vous modifier de ce Magazin : ");
         do {
             System.out.println("\t 0) Sortire");
             System.out.println("\t 1) Titre (" + getTitle() + ")");
-            System.out.println("\t 2) Localisation (" + getLocation() + ")");
-            System.out.println("\t 3) Nombre Exemplaires (" + getNumberCopies() + ")");
-            System.out.println("\t 4) Fréquence de parution (" + getFrequency() + ")");
+            System.out.println("\t 2) Nombre d'exemplaire ("+getNumberCopies()+")");
+            System.out.println("\t 3) Fréquence de parution ("+getFrequency()+")");
+            System.out.println("\t 4) Localisation ("+getLocation()+")");
             choice = sc.nextLine();
             switch (choice){
                 case "0": return;
@@ -90,16 +91,28 @@ public class Magazine extends Document {
                     p.pause(1000);
                     break;
                 case "2":
-                    String loc = getLocation();
-                    System.out.println("\t Entrer nouvelle localisation (Salle/Rayon)");
-                    setLocation(sc.nextLine());
+                    System.out.println("\t Entrer nouvelle fréquence ");
+                    verified=false;
+                    int freq = getFrequency();
+                    do {
+                        try{
+                            setFrequency(sc.nextInt());
+                            verified = true;
+                        } catch (Exception e){
+                            System.out.println("\t Erreur! Veillez entrer des chiffres...");
+                            System.out.println("\t Entrer nouvelle fréquence ");
+                            p.pause(500);
+                            sc.nextLine();
+                        }
+                    }while (!verified);
+                    sc.nextLine();
+                    history.add(new History(new Date(), "Document", "Modification",getId(), "frequence de "+freq+" par "+getFrequency()));
                     System.out.println("\t Modification avec succees.");
-                    history.add(new History(new Date(), "Document", "Modification", getId(), "Localisation de " + loc + " par " + getLocation()));
                     p.pause(1000);
                     break;
                 case "3":
                     System.out.println("\t Entrer nouveau nombre d'exemplaires");
-                    boolean verified = false;
+                    verified=false;
                     int nb = getNumberCopies();
                     do {
                         try{
@@ -118,23 +131,11 @@ public class Magazine extends Document {
                     p.pause(1000);
                     break;
                 case "4":
-                    System.out.println("\t Entrer nouvelle fréquence ");
-                    verified=false;
-                    int freq = getFrequency();
-                    do {
-                        try{
-                            setFrequency(sc.nextInt());
-                            verified = true;
-                        } catch (Exception e){
-                            System.out.println("\t Erreur! Veillez entrer des chiffres...");
-                            System.out.println("\t Entrer nouvelle fréquence ");
-                            p.pause(500);
-                            sc.nextLine();
-                        }
-                    }while (!verified);
-                    sc.nextLine();
-                    history.add(new History(new Date(), "Document", "Modification", getId(), "frequence de " + freq + " par " + getFrequency()));
+                    String loc = getLocation();
+                    System.out.println("\t Entrer nouvelle localisation (Salle/Rayon)");
+                    setLocation(sc.nextLine());
                     System.out.println("\t Modification avec succees.");
+                    history.add(new History(new Date(), "Document", "Modification", getId(), "Localisation de "+loc+" par "+getLocation()));
                     p.pause(1000);
                     break;
                 default:
