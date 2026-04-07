@@ -50,7 +50,7 @@ public class Book extends Document {
     }
 
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         return "Book [ " + super.toString() + ", N.A: " + authorName + ", N.E: " + editorName + ", D.E: " + sdf.format(
                 publicationDate) + " ]";
     }
@@ -61,7 +61,7 @@ public class Book extends Document {
             k=0;
         else
             k= Math.ceil(((double) getNumberTotalBorrow() / number) * 100);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         System.out.printf("|%9s", getClass().getSimpleName());
         System.out.printf("|%4d", getId());
         System.out.printf("|%40s", getTitle());
@@ -95,7 +95,7 @@ public class Book extends Document {
     public void modifyDocument(Scanner sc, ArrayList<History> history){
         String choice, str;
         Pause p = new Pause();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         System.out.println("\t Que voulez vous modifier de ce Book : ");
         do {
             System.out.println("\t 0) Sortire");
@@ -162,7 +162,7 @@ public class Book extends Document {
                     break;
                 case "6":
                     String oldPublicationDate = sdf.format(getPublicationDate());
-                    System.out.println("\t Entrer nouvelle date de publication sous forme (DD/MM/YYYY)");
+                    System.out.println("\t Entrer nouvelle date de publication sous forme (DD-MM-YYYY)");
                     str = sc.nextLine();
                     try {
                         setPublicationDate(sdf.parse(str));
