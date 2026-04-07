@@ -45,7 +45,7 @@ public class Library {
     public void menu(){
         String choice;
         do {
-            System.out.println("\n\t **********\tLE MENU PRINCIPALE DE LA BIBLIOTHEQUE\t**********");
+            System.out.println("\n\t **********\tLE MENU PRINCIPAL DE LA BIBLIOTHEQUE\t**********");
             System.out.println("\t Veillez choisir le numero correspondant à votre choix");
             System.out.println("\t 0 ) Quitter l'application");
             System.out.println("\t 1 ) Gestion des Adherents");
@@ -69,10 +69,10 @@ public class Library {
     public void memberManagement(){
         String memberChoice;
         do {
-            System.out.println("\n\t *****\tGestion Adherents\t*****");
+            System.out.println("\n\t *****\tGestion Adhérents\t*****");
             System.out.println("\t Veillez choisir le numero correspondant à votre choix");
             System.out.println("\t 0 ) Retour au menu principale");
-            System.out.println("\t 1 ) Afficher les adherent disponible");
+            System.out.println("\t 1 ) Afficher les adhérent disponible");
             System.out.println("\t 2 ) Ajouter un nouvelle adherent");
             System.out.println("\t 3 ) Modifier un adherent par id");
             System.out.println("\t 3 ) Supprimer un adherent par id");
@@ -145,11 +145,11 @@ public class Library {
         for (Document d: documents)
             for (BorrowDocument pretDocument:d.getBorrowList())
                 if (pretDocument.getMember() == a){
-                    System.out.println("\t Suppression impossible! Cet adherent a encore des pret en cours...");
+                    System.out.println("\t Suppression impossible! Cet adhérent a encore des pret en cours...");
                     pause.pause(1000);
                     return;
                 }
-        System.out.println("\t Vous êtes sur de supprimer l'adherent : " + a.getFirstName() + " " + a.getName() + " ?");
+        System.out.println("\t Vous êtes sur de supprimer l'adhérent : " + a.getFirstName() + " " + a.getName() + " ?");
         System.out.println("\t 1 ) Continuer");
         if (sc.nextLine().equals("1")){
 //           SUPPRIMER ADHERENT
@@ -647,7 +647,7 @@ public class Library {
             System.out.println("\t Veillez choisir le numero correspondant à votre choix");
             System.out.println("\t 0 ) Retour au menu principale");
             System.out.println("\t 1 ) Afficher tout l'historique disponible");
-            System.out.println("\t 2 ) Afficher historique des adherents");
+            System.out.println("\t 2 ) Afficher historique des adhérents");
             System.out.println("\t 3 ) Afficher historique des documents");
             System.out.println("\t 4 ) Afficher historique des prets");
             System.out.println("\t 5 ) Afficher historique des modifications");
@@ -830,7 +830,7 @@ public class Library {
         Member member = new Member();
         do {
             System.out.println("\t 0 ) Annuler");
-            System.out.println("\t 1 ) Lister les adherents");
+            System.out.println("\t 1 ) Lister les adhérents");
             System.out.println("\t 2 ) Entree ID adherent");
             System.out.println("\t Veillez choisir une option : ");
             choice = sc.nextLine();
